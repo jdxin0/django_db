@@ -1,6 +1,11 @@
 # minidjango
-* a simple way to use django orm in not django project
-* multi databases support
+* A simple way to use django orm in not django project
+* Multi databases support
+* Replace mysqldb with pymysql, so it will work with gevent.
+  Use monkey patch before you import minidjango.
+* If you use gevent with mysql, it will create one connection per greelet. So remember to control connection number. 
+  Db operation worker is a great way.
+  Close connection manually with django.db.connections.close_all() after each request is another way but not recommended.
 
 ```
 from django.db import models
