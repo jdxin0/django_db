@@ -40,7 +40,7 @@ if __name__ == '__main__':
     Test.create(id=1, name='test')
 ```
 
-# multi databases example
+## multi databases example
 
 ```
 _app_lable = add_db(db_config)
