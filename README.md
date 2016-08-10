@@ -19,12 +19,14 @@ db_config = {
 
 _app_lable = add_db(db_config)
 
+
 class Test(models.Model):
     name = models.CharField(max_length=32)
 
     class Meta:
         app_label = _app_lable
         db_table = 'test'
+
 
 if __name__ == '__main__':
     Test.create(id=1, name='test')
