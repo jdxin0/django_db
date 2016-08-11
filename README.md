@@ -1,4 +1,5 @@
 # django_db
+* pip install django_db
 * A simple way to use django orm not in a classic django project
 * Multi databases support
 * Replace mysqldb with pymysql, so it will work with gevent.
