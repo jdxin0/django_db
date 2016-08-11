@@ -38,7 +38,7 @@ class Router(object):
         return None
 
 
-def add_db(db_conf: dict) -> str:
+def add_db(db_conf):
     app_label = 'al' + str(uuid4()).split('-')[0]
 
     if app_label in settings.DATABASES.keys():
