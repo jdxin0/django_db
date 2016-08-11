@@ -1,5 +1,5 @@
-# minidjango
-* A simple way to use django orm in not django project
+# django_orm
+* A simple way to use django orm not in a classic django project
 * Multi databases support
 * Replace mysqldb with pymysql, so it will work with gevent.
   Use monkey patch before you import minidjango.
