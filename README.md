@@ -13,7 +13,7 @@
 
 ```python
 from django.db import models
-from minidjango import add_db
+from django_db import add_db
 
 # django db configure
 db_config = {
