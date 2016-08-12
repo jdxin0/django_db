@@ -9,9 +9,9 @@
   Close connection manually with django.db.connections.close_all() after each request is another way but not recommended.
 
 
-## simple exmaple
+## simple example
 
-```
+```python
 from django.db import models
 from minidjango import add_db
 
@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
 ## multi databases example
 
-```
+```python
 _app_lable = add_db(db_config)
 _app_lable2 = add_db(db_config2)
 
