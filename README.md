@@ -38,7 +38,7 @@ class Test(models.Model):
 
 
 if __name__ == '__main__':
-    Test.objects.create(id=1, name='test)
+    Test.objects.create(id=1, name='test')
 ```
 
 ## multi databases example
