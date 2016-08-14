@@ -1,4 +1,5 @@
 # django_db
+* pip install django_db
 * A simple way to use django orm not in a classic django project
 * Multi databases support
 * Replace mysqldb with pymysql, so it will work with gevent.
@@ -8,11 +9,11 @@
   Close connection manually with django.db.connections.close_all() after each request is another way but not recommended.
 
 
-## simple exmaple
+## simple example
 
-```
+```python
 from django.db import models
-from minidjango import add_db
+from django_db import add_db
 
 # django db configure
 db_config = {
@@ -37,12 +38,12 @@ class Test(models.Model):
 
 
 if __name__ == '__main__':
-    Test.create(id=1, name='test')
+    Test.objects.create(id=1, name='test')
 ```
 
 ## multi databases example
 
-```
+```python
 _app_lable = add_db(db_config)
 _app_lable2 = add_db(db_config2)
 
@@ -63,6 +64,6 @@ class Test2(models.Model):
         db_table = 'test2'
         
 if __name__ == '__main__':
-    Test.create(id=1, name='test')
-    Test.create(id=1, name='test2')
+    Test.objects.create(id=1, name='test')
+    Test.objects.create(id=1, name='test2')
 ```
