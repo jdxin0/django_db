@@ -4,7 +4,7 @@
 * Multi databases support
 * Replace mysqldb with pymysql, so it will work with gevent.
   Use monkey patch before you import minidjango.
-* If you use gevent with mysql, it will create one connection per greelet. So remember to control connection number. 
+* If you use gevent with mysql, it will create one connection per greelet. So remember to control connection number.
   Db operation worker is a great way.
   Close connection manually with django.db.connections.close_all() after each request is another way but not recommended.
 
@@ -13,7 +13,7 @@
 
 ```python
 from django.db import models
-from django_db import add_db
+from django_db import add_db, create_model
 
 # django db configure
 db_config = {
@@ -38,6 +38,7 @@ class Test(models.Model):
 
 
 if __name__ == '__main__':
+    create_model(Test)
     Test.objects.create(id=1, name='test')
 ```
 
@@ -54,7 +55,7 @@ class Test(models.Model):
     class Meta:
         app_label = _app_lable
         db_table = 'test'
-        
+
 
 class Test2(models.Model):
     name = models.CharField(max_length=32)
@@ -62,8 +63,10 @@ class Test2(models.Model):
     class Meta:
         app_label = _app_lable2
         db_table = 'test2'
-        
+
 if __name__ == '__main__':
+    create_model(Test1)
+    create_model(Test2)
     Test.objects.create(id=1, name='test')
     Test.objects.create(id=1, name='test2')
 ```

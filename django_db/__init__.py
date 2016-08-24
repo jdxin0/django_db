@@ -5,6 +5,7 @@ import pymysql
 import django
 
 from . import settings
+from .schema_editor import *
 
 # replace mysqldb with pymysql
 pymysql.install_as_MySQLdb()
