@@ -70,3 +70,8 @@ if __name__ == '__main__':
     Test.objects.create(id=1, name='test')
     Test.objects.create(id=1, name='test2')
 ```
+
+## test
+```sh
+python -m tests.run
+```
