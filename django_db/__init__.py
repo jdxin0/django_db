@@ -55,5 +55,5 @@ def add_db(db_conf):
     settings.DATABASE_ROUTERS.append(
         '.'.join([settings.__name__, router_class_name])
     )
-
+    connections.close_all()
     return app_label
