@@ -3,9 +3,9 @@ from uuid import uuid4
 
 import pymysql
 import django
+from django.db import connections
 
 from . import settings
-from .schema_editor import *
 
 # replace mysqldb with pymysql
 pymysql.install_as_MySQLdb()
@@ -40,10 +40,8 @@ class Router(object):
 
 
 def add_db(db_conf):
-    app_label = 'al' + str(uuid4()).split('-')[0]
+    app_label = 'al_' + str(uuid4())
 
-    if app_label in settings.DATABASES.keys():
-        raise Exception('app_label already exists, plase chose another')
     settings.DATABASES[app_label] = db_conf
 
     router_class_name = 'Router' + app_label.capitalize()
@@ -57,3 +55,26 @@ def add_db(db_conf):
     )
     connections.close_all()
     return app_label
+
+
+def create_model(model):
+    with connections[model._meta.app_label].schema_editor() as schema_editor:
+        schema_editor.create_model(model)
+
+
+def delete_model(model):
+    with connections[model._meta.app_label].schema_editor() as schema_editor:
+        schema_editor.delete_model(model)
+
+
+def check_table_exists(model):
+    conn = connections[model._meta.app_label]
+    cursor = conn.cursor()
+    table_names = [table_info.name for table_info in conn.introspection.get_table_list(cursor)]
+    cursor.close()
+    return model._meta.db_table in table_names
+
+
+def sync_table(model):
+    if not check_table_exists(model):
+        create_model(model)
