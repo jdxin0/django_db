@@ -13,7 +13,7 @@
 
 ```python
 from django.db import models
-from django_db import add_db, create_model, sync_model
+from django_db import add_db, create_model, sync_table
 
 # django db configure
 db_config = {
@@ -66,7 +66,7 @@ class Test2(models.Model):
 
 if __name__ == '__main__':
     create_model(Test1)
-    sync_model(Test2)
+    sync_table(Test2)
     Test.objects.create(id=1, name='test')
     Test.objects.create(id=1, name='test2')
 ```
