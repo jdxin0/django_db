@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='django_db',
-    version='0.0.6',
+    version='0.0.7',
     url='https://github.com/jdxin0/django_db',
     description='A simple way to use django orm not in a classic django project',
     author='jdxin0',

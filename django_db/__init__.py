@@ -3,7 +3,7 @@ from uuid import uuid4
 
 import pymysql
 import django
-from django.db import connections
+from django.db import connections, close_old_connections
 
 from . import settings
 
@@ -72,6 +72,7 @@ def check_table_exists(model):
     cursor = conn.cursor()
     table_names = [table_info.name for table_info in conn.introspection.get_table_list(cursor)]
     cursor.close()
+    connections.close_all()
     return model._meta.db_table in table_names
 
 
